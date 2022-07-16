@@ -19,7 +19,7 @@ class Helper
         }
 
         return [
-            'api_version'=> '1.0',
+            "status" => false,
             'error'=> [
                 'message'=> 'cannot be processed.',
                 'reason' => 'ValidationException',

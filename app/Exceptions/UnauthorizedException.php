@@ -13,7 +13,9 @@ class UnauthorizedException  extends \Exception
     }
     public function render()
     {
-        return Response(["error" => [
+        return Response([
+            "status" => false,
+            "error" => [
                 "message" => $this->message,
                 "errors" => [[
                     "domain" => null,
