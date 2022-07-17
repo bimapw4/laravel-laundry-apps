@@ -24,11 +24,12 @@ $router->group([
 ], function () use ($router) {
     $router->post("/register", "AuthController@Register");
     $router->post("/login", "AuthController@Login");
-    $router->post("/change-password", "AuthController@ChangePassword");
-
+    $router->post("/change-password", ["uses" => "AuthController@ChangePassword", "middleware" => "jwt.privateAuth"]);
+    
     $router->group([
         "prefix" => "mail"
     ], function () use ($router) {
+        $router->put('/forgot-password/{key}', "AuthController@ChangePassword");
         $router->get('/forgot-password/{key}', "AuthController@getMailforgotPassword");
         $router->post('/forgot-password', "AuthController@sendMailforgotPassword");
     });

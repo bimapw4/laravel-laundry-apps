@@ -90,19 +90,30 @@ class AuthController extends Controller
                 throw new UnauthorizedException("expired request for forgot password", 410); 
             }
 
-            return ["data" => $user];
+            return $user;
             
         } catch (\UnauthorizedException $th) {
         }
     }
 
-    public function ChangePassword(Request $request)
+    public function ChangePassword(Request $request, $key = null)
     {
         try {
+            $email = null;
+            if($key) {
+                $user = $this->getMailforgotPassword($key);
+                $email = $user['email'];
+            } else if ($request->userdata->email) {
+                $email = $request->userdata->email;
+            }
+            
+            $request->request->add(["email" => $email]);
+
             (new ValidatorManager)->validateJSON($request, self::ruleChangePass());
 
+
             return Pengguna::where("email", $request->email)->update([
-                "password" => Hash::make($request->password)
+                "password" => Hash::make($request->new_password)
             ]);
 
         } catch (\ValidateException $th) {
