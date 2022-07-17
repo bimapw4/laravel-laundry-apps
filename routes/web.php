@@ -11,6 +11,9 @@
 |
 */
 
+use App\Mail\MailForgotPassword;
+use App\Services\Mail\MailManajer;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
@@ -21,4 +24,12 @@ $router->group([
 ], function () use ($router) {
     $router->post("/register", "AuthController@Register");
     $router->post("/login", "AuthController@Login");
+    $router->post("/change-password", "AuthController@ChangePassword");
+
+    $router->group([
+        "prefix" => "mail"
+    ], function () use ($router) {
+        $router->get('/forgot-password/{key}', "AuthController@getMailforgotPassword");
+        $router->post('/forgot-password', "AuthController@sendMailforgotPassword");
+    });
 });

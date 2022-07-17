@@ -26,7 +26,7 @@ class AuthManager
 
     public function checkEmail($user)
     {
-        if ($user->count() == 0) {
+        if (!$user) {
             throw new UnauthorizedException("email not found", 404);
         }
     }
