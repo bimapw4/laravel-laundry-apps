@@ -19,6 +19,7 @@ class CreateDetailtransaksiTable extends Migration
             $table->decimal("berat", 15);
             $table->string("id_transaksi", 25);
             $table->string("id_harga_laundry", 25);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

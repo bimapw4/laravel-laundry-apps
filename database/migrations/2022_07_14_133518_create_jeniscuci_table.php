@@ -16,6 +16,7 @@ class CreateJeniscuciTable extends Migration
         Schema::create('jeniscuci', function (Blueprint $table) {
             $table->bigIncrements('id_jenis_cuci');
             $table->string("nama_jenis_cuci", 25);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

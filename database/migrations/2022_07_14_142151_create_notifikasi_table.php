@@ -19,6 +19,7 @@ class CreateNotifikasiTable extends Migration
             $table->text("deskripsi");
             $table->string("type", 25);
             $table->string("id_transaksi", 25);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

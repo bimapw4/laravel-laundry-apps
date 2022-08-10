@@ -17,6 +17,7 @@ class CreateLayananTable extends Migration
             $table->bigIncrements('id_layanan');
             $table->string("nama_layanan", 25);
             $table->decimal("biaya", 15);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

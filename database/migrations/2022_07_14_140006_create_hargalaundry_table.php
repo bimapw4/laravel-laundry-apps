@@ -18,6 +18,7 @@ class CreateHargalaundryTable extends Migration
             $table->decimal("harga", 15);
             $table->string("id_barang");
             $table->string("id_jenis_cuci");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

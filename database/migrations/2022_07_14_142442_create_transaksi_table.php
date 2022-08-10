@@ -24,6 +24,7 @@ class CreateTransaksiTable extends Migration
             $table->string("id_pengguna", 25);
             $table->string("id_status", 25);
             $table->string("id_layanan", 25);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

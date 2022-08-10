@@ -20,6 +20,7 @@ class CreateKomplainTable extends Migration
             $table->string("kategori", 25);
             $table->string("status");
             $table->string("id_transaksi");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

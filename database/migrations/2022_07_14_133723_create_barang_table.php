@@ -17,6 +17,7 @@ class CreateBarangTable extends Migration
             $table->bigIncrements('id_barang');
             $table->string("nama_barang", 25);
             $table->string("id_kategori", 25);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

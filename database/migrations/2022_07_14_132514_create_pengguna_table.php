@@ -21,6 +21,7 @@ class CreatePenggunaTable extends Migration
             $table->string("telephone", 13);
             $table->string("email", 25);
             $table->text("password");
+            $table->softDeletes();
             $table->timestamps();
         });
     }
