@@ -34,3 +34,14 @@ $router->group([
         $router->post('/forgot-password', "AuthController@sendMailforgotPassword");
     });
 });
+
+$router->group([
+    "namespace" => "Category",
+    "prefix" => "category",
+    "middleware" => "jwt.privateAuth"
+], function () use ($router) {
+    $router->get('/', 'IndexController@Index');
+    $router->post('/', 'IndexController@Create');
+    $router->put('/', 'IndexController@Update');
+    $router->delete('/{id}', 'IndexController@Delete');
+});
