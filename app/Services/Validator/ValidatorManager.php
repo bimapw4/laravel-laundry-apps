@@ -29,4 +29,13 @@ class ValidatorManager
 
         return $validator->validated();
     }
+
+    public function ValidateNotExist($model, $id)
+    {
+        $count = $model->where('id', $id)->count();
+
+        if (!$count) {
+            throw new UnauthorizedException("data not found", 404);
+        }
+    }
 }
