@@ -45,3 +45,14 @@ $router->group([
     $router->put('/', 'IndexController@Update');
     $router->delete('/{id}', 'IndexController@Delete');
 });
+
+$router->group([
+    "namespace" => "pelanggan",
+    "prefix" => "user",
+    "middleware" => "jwt.privateAuth"
+], function () use ($router) {
+    $router->get("/", "IndexController@Index");
+    $router->post("/", "IndexController@Create");
+    $router->put("/", "IndexController@Update");
+    $router->delete("/{id}", "IndexController@Delete");
+});
