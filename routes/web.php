@@ -56,3 +56,14 @@ $router->group([
     $router->put("/", "IndexController@Update");
     $router->delete("/{id}", "IndexController@Delete");
 });
+
+$router->group([
+    "namespace" => "Barang",
+    "prefix" => "item",
+    "middleware" => "jwt.privateAuth"
+], function () use ($router) {
+    $router->get("/", "IndexController@index");
+    $router->post("/", "IndexController@create");
+    $router->put("/", "IndexController@update");
+    $router->delete("/{id}", "IndexController@delete");
+});
