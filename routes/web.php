@@ -67,3 +67,14 @@ $router->group([
     $router->put("/", "IndexController@update");
     $router->delete("/{id}", "IndexController@delete");
 });
+
+$router->group([
+    "namespace" => "Layanan",
+    "prefix" => "services",
+    "middleware" => "jwt.privateAuth"
+], function () use ($router) {
+    $router->get("/", "IndexController@index");
+    $router->post("/", "IndexController@create");
+    $router->put("/", "IndexController@update");
+    $router->delete("/{id}", "IndexController@delete");
+});
