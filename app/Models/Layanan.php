@@ -9,7 +9,7 @@ class Layanan extends Model
     
     use SoftDeletes;
 
-    protected $table = "barang";
+    protected $table = "layanan";
     protected $primaryKey = "id_layanan";
 
     protected $fillable = [

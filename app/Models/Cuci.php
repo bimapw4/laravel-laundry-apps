@@ -9,7 +9,7 @@ class Cuci extends Model
     
     use SoftDeletes;
 
-    protected $table = "barang";
+    protected $table = "jeniscuci";
     protected $primaryKey = "id_jenis_cuci";
 
     protected $fillable = [
